@@ -2,7 +2,7 @@
 
 window.onload = function(){
 	
-	//s.loadPeage();	
+	s.loadPeage();	
 };
 
 var s = {
@@ -42,7 +42,7 @@ var s = {
 	},
 	
 	loadNav : function(){
-		let href = location.pathname;
+		let href = location.pathname;console.log(href.slice(1));
 		this.peage = href.length == 1 ? 'index': href.slice(1);
 		let nav = document.querySelector('.wrap_nav nav');
 		let active = nav.querySelector('.active_btn');	
