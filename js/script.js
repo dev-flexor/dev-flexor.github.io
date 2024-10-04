@@ -47,8 +47,7 @@ var s = {
 		let nav = document.querySelector('.wrap_nav nav');
 		let active = nav.querySelector('.active_btn');	
 		if(active) active.classList.remove('active_btn');
-		console.log('a[href='+this.peage+'.html]');
-		nav.querySelector('a[href='+this.peage+'.html]').classList.add('active_btn');		
+		nav.querySelector('a[href='+this.peage+']').classList.add('active_btn');		
 	},
 	
 	loadContent : function(){	
