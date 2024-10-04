@@ -47,7 +47,7 @@ var s = {
 		let nav = document.querySelector('.wrap_nav nav');
 		let active = nav.querySelector('.active_btn');	
 		if(active) active.classList.remove('active_btn');
-		nav.querySelector(`a[href='${this.page}']`).classList.add('active_btn');
+		nav.querySelector(`a[href='${CSS.escape(this.peage)}']`).classList.add('active_btn');
 	},
 	
 	loadContent : function(){	
