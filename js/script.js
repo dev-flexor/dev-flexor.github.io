@@ -61,10 +61,7 @@ var s = {
 
 		const dotIndex = this.peage.lastIndexOf('.');
 		let resP = 'index';
-		// Якщо крапка знайдена, вирізати частину до крапки
-		if (dotIndex != -1) {
-			resP = str.substring(0, dotIndex);
-		}
+		if (dotIndex != -1) resP = this.peage.substring(0, dotIndex);
 
 		document.title = this.titles[resP];
 		this.loadStyleScript();
