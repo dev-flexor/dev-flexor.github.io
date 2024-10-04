@@ -7,7 +7,7 @@ window.onload = function(){
 
 var s = {
 	
-	peage : 'index',
+	peage : 'index.html',
 
 	titles : {index : 'Home', notes : 'Notes', games : 'Games'},
 
@@ -43,11 +43,11 @@ var s = {
 	
 	loadNav : function(){
 		let href = location.pathname;console.log(href.slice(1));
-		this.peage = href.length == 1 ? 'index': href.slice(1);
+		this.peage = href.length == 1 ? 'index.html': href.slice(1);
 		let nav = document.querySelector('.wrap_nav nav');
 		let active = nav.querySelector('.active_btn');	
 		if(active) active.classList.remove('active_btn');
-		nav.querySelector('a[href='+this.peage+']').classList.add('active_btn');		
+		nav.querySelector('a[href='+this.peage+'.html]').classList.add('active_btn');		
 	},
 	
 	loadContent : function(){	
@@ -89,8 +89,10 @@ var s = {
 
 	loadStyleScript : function(){
 		this.removeOldTags();
-
-		var arrLinks = this.stylesScripts[this.peage];
+		let dotIndex = this.peage.lastIndexOf('.');
+		let res = this.peage.substring(0, dotIndex);
+		
+		var arrLinks = this.stylesScripts[res];
 		for (let element of arrLinks) {
 		    console.log(element);
 
