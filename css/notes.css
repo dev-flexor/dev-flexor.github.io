@@ -1,1 +1,93 @@
+.wrap_content{
+	width: 70%;
+	margin: 0 auto;
+}
 
+
+.wrap_content .wrap_main_info{
+		display: flex;
+		justify-content: space-between;
+	  width: 100%;
+}
+
+.wrap_content .wrap_app_info{
+		flex: 1;
+		padding-top: 20px;
+}
+
+.wrap_content .wrap_app_info h1{
+		font-size: 60px;
+}
+
+.wrap_content .wrap_app_info .href_dev{
+	color: #01875F;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+.wrap_content .wrap_app_info .wrap_stat{
+		display: flex;
+		margin: 20px 0;
+}
+
+.wrap_content .wrap_app_info .wrap_stat div{
+	padding: 10px;
+	text-align: center;
+	margin-right: 10px;
+}
+
+.wrap_content .wrap_app_info .wrap_stat div span:first-child{
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.wrap_content .wrap_app_info .wrap_stat div:last-child span:first-child{
+	border: 1px solid #000;
+}
+
+
+.wrap_content .wrap_app_info .wrap_btns{
+	display: block;
+	width: 100%;
+	padding: 10px;
+}
+
+.wrap_content .wrap_app_info .wrap_btns a{
+	background-color: #01875F;
+  padding: 10px 50px;
+	display: inline-block;
+	color: #fff;
+	border-radius: 10px;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+
+.wrap_content .wrap_app_logo{
+	display: flex;
+	flex: 0;
+	white-space: nowrap;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.wrap_content .wrap_app_logo img{
+	height: 200px;
+	border-radius: 35px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+.wrap_content .wrap_screen{
+	/*background-color: #000;*/
+	padding: 10px;
+	overflow-x: auto;
+	white-space: nowrap;
+	margin: 20px 0;
+}
+.wrap_content .wrap_screen img{
+	width: 135px;
+	border-radius: 10px;
+	margin-right: 10px;
+}
