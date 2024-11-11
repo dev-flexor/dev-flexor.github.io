@@ -3,6 +3,33 @@
 window.onload = function(){
 	
 	s.loadPeage();	
+	
+	/*const appId = 'dev.flexor.writestore'; // замініть на ваш ідентифікатор додатку
+	const url = `https://play.google.com/store/apps/details?id=${appId}`;
+
+	// Використання Fetch API для отримання HTML сторінки
+	fetch(url)
+	  .then(response => response.text())
+	  .then(html => {
+		// Створюємо парсер для HTML
+		const parser = new DOMParser();
+		const doc = parser.parseFromString(html, 'text/html');
+		
+		// Отримання назви додатку
+		const title = doc.querySelector('h1 span').innerText;
+		
+		// Отримання рейтингу додатку
+		const rating = doc.querySelector('div.BHMmbe').innerText;
+
+		// Отримання кількості завантажень
+		const downloads = doc.querySelector('div span[class="htlgb"]').innerText;
+
+		console.log('Назва:', title);
+		console.log('Рейтинг:', rating);
+		console.log('Завантажень:', downloads);
+	  })
+	  .catch(error => console.error('Помилка:', error));*/
+	
 };
 
 var s = {
@@ -13,32 +40,15 @@ var s = {
 
 	stylesScripts : {index : ['index'], notes : ['notes'], games : ['games']},
 	
+	gpUrl : 'https://play.google.com/store/apps/dev?id=6860317347778875449',
+	
 	initNav : function(){
 		
 		window.onpopstate = () => {
 			this.loadNav();
 			
 			this.loadContent();		
-		};	
-		
-		var self = this;
-		var click = function(e){			
-			if(!this.classList.contains('active_btn')){
-								
-				document.querySelector('.wrap_nav nav .active_btn').classList.remove('active_btn');
-				this.classList.add('active_btn');
-				
-				self.peage = this.getAttribute('href');
-				history.pushState(null, null, self.peage);
-
-				self.loadContent();
-			}
-			
-			e.preventDefault();
-		};
-		
-		let a = document.querySelectorAll('.wrap_nav nav a');
-		for(let v of a) v.onclick = click;			
+		};				
 	},
 	
 	loadNav : function(){
@@ -47,7 +57,7 @@ var s = {
 		let nav = document.querySelector('.wrap_nav nav');
 		let active = nav.querySelector('.active_btn');	
 		if(active) active.classList.remove('active_btn');
-		nav.querySelector(`a[href='${CSS.escape(this.peage)}']`).classList.add('active_btn');
+		nav.querySelector(`a[href='${this.peage}']`).classList.add('active_btn');
 	},
 	
 	loadContent : function(){	
@@ -66,10 +76,9 @@ var s = {
 		document.title = this.titles[resP];
 		this.loadStyleScript();
 	},
-
 	
 	loadPeage : function(){
-		fetch('views/footer').then(function(response){
+		fetch('views/footer.html').then(function(response){
 			return response.text();
 		})
 		.then(function(response){				
@@ -78,7 +87,7 @@ var s = {
 		});
 		
 		
-		fetch('views/header').then(function(response){
+		fetch('views/header.html').then(function(response){
 			return response.text();
 		})
 		.then((response) => {								
@@ -88,7 +97,33 @@ var s = {
 			this.initNav();
 			this.loadNav();
 			this.loadContent();
+			this.initClick();		
 		});
+	},
+	
+	initClick : function(){
+		var self = this;
+		var click = function(e){			
+			if(!this.classList.contains('active_btn')){
+								
+				document.querySelector('.wrap_nav nav .active_btn').classList.remove('active_btn');
+				this.classList.add('active_btn');
+				
+				self.peage = this.getAttribute('href');
+				history.pushState(null, null, self.peage);
+
+				self.loadContent();
+			}
+			
+			e.preventDefault();
+		};
+		
+		let a = document.querySelectorAll('.wrap_nav nav a');
+		for(let v of a) v.onclick = click;
+		
+		document.querySelector('.wrap_header .wrap_gp_logo').onclick = function(e){
+			window.open(self.gpUrl, "_blank");
+		};
 	},
 
 	loadStyleScript : function(){
